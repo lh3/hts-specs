@@ -501,7 +501,7 @@ may be changed if the new type is also compatible with the array.
   {\tt R2} & Z & Sequence of the mate/next segment in the template. \\
   {\tt RG} & Z & Read group. Value matches the header {\tt RG-ID} tag if {\tt @RG} is present in the header. \\
   {\tt RT} & Z & Deprecated alternative to {\tt BC} tag originally used at Sanger. \\
-  {\tt RX} & Z & Raw (uncorrected) molecular-barcode bases, with any quality scores stored in the {\tt QX} tag. \\
+  {\tt RX} & Z & Raw (uncorrected) molecular-barcode bases, with any quality scores stored in the {\tt QX} tag. \footnotemark\\
   {\tt SA} & Z & Other canonical alignments in a chimeric alignment, formatted as a semicolon-delimited list:
     {\tt (}\emph{rname}{\tt ,}\emph{pos}{\tt ,}\emph{strand}{\tt ,}\emph{CIGAR}{\tt ,}\emph{mapQ}{\tt ,}\emph{NM}{\tt ;)}+.
     Each element in the list represents a part of the chimeric alignment. Conventionally, at a supplementary line,
@@ -561,9 +561,8 @@ are all percent encoded as in the {\tt CT} tag.
 Formally the entire PT record matches:
  ``{\tt \emph{start};\emph{end};\emph{strand};\emph{type}(;\emph{key}(=\emph{value}))*(\char92|\emph{start};\emph{end};\emph{strand};\emph{type}(;\emph{key}(=\emph{value}))*)*}''.
  }%End of PT tag footnote
-
-
-
+\stepcounter{footnote}
+\footnotetext{The {\tt RX} tag should match in length with the {\tt QX} tag. What one does with multiple molecular barcodes (e.g. one on each end of the template) is left for the implementation. One current implementation concatenates all the barcodes and qualities (with no separating character) and places the concatenated strings in all the reads from the same template. This is provided here as an example, it is not required to follow this nor to treat it as a convention.}
 \pagebreak
 
 \section{Recommended Practice for the SAM Format}
